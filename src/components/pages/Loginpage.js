@@ -4,9 +4,8 @@ import {Link} from 'react-router-dom';
 import LoginForm from '../forms/LoginForm';
 
 class LoginPage extends React.Component{
-  onSubmit = (data)=>{
-        console.log(data);
-  }
+  onSubmit = (data)=>this.props.login(data).then(()=>{this.props.history.push('/')});
+
   render(){
     return(
       <div>
@@ -15,4 +14,15 @@ class LoginPage extends React.Component{
     )
   }
 }
+
+LoginPage.propTypes={
+  history : PropTypes.shape(
+    {
+      push :propTypes.funs.isRequired
+    }
+  ).isRequired,
+
+  login : propTypes.funs.isRequired
+};
+
 export default LoginPage;
