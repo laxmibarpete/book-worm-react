@@ -1,14 +1,18 @@
 
 import React from 'react';
 import {Link} from 'react-router-dom';
+import LoginForm from '../forms/LoginForm';
 
- const LoginPage = ()=>{
-   return( 
+class LoginPage extends React.Component{
+  onSubmit = (data)=>{
+        console.log(data);
+  }
+  render(){
+    return(
       <div>
-           <h1>LoginPage</h1>
-         
+      <LoginForm submit={this.onSubmit}/>
       </div>
-   );
+    )
+  }
 }
-
 export default LoginPage;
