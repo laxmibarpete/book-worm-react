@@ -7,6 +7,9 @@ export const userLoggedIn= (user)=>({
     user
 });
 
-
-export const login = (credential)=> 
-    (dispatch)=>api.user.login(credential).then(user=>dispatch(userLoggedIn(user)));
+export const login = credentials => dispatch =>
+  api.user.login(credentials).then(user => {
+    // localStorage.bookwormJWT = user.token;
+    // setAuthorizationHeader(user.token);
+    dispatch(userLoggedIn(user));
+  });
